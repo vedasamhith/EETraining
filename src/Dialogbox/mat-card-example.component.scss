@@ -1,0 +1,77 @@
+.wrap {
+    display: flex;
+    margin: 0 auto;
+    height: 100%;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.submenu-card {
+    //border: 1px solid black;
+    border-radius: 5px;
+    text-align: center;
+    height: 102%;
+    width: 20%;
+    //max-width: 300px;
+    margin-left: 40px;
+    //background-color: white;
+    color: black;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.mainmenu-card {
+    //border: 1px solid black;
+    border-radius: 5px;
+    text-align: center;
+    height: 50%;
+    width: 74%;
+    //max-width: 300px;
+    margin-left: 20px;
+    background-color: white;
+    color: black;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+
+}
+
+.appfilter-card {
+    //border: 1px solid black;
+    border-radius: 5px;
+    text-align: center;
+    height: 10%;
+    width: 98%;
+    //max-width: 300px;
+    margin-left: 20px;
+    background-color: white;
+    color: black;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+
+}
+
+.mdc-list-item__content {
+    flex: none !important;
+}
+
+.active{
+    background: aliceblue;font-weight: bolder;
+}
+
+.toolbar-item-spacer {
+    flex: 1 1 auto;
+}
+
+.app-container {
+    height: 300%;
+    margin: 0;
+}  
+.app-sidenav {
+    width: 230px;
+}
+.app-sidenav-content {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+} 
