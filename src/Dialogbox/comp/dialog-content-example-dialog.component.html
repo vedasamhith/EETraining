@@ -1,8 +1,92 @@
-<h2 mat-dialog-title>Delete file</h2>
-<mat-dialog-content>
-  Would you like to delete cat.jpeg?
-</mat-dialog-content>
-<mat-dialog-actions>    
-  <button mat-button mat-dialog-close cdkFocusInitial>Ok</button>
-  <button mat-button mat-dialog-close>Cancel</button>
-</mat-dialog-actions>
+<form #form="ngForm">
+
+  <h1 mat-dialog-title>Row Action :: <strong>{{action}}</strong></h1>
+  <div mat-dialog-content>
+    <div *ngIf="action != 'Delete'; else elseTemplate">
+      <mat-form-field>
+        <mat-label>User Name</mat-label>
+        <input placeholder="User Name" matInput [(ngModel)]="local_data.user_name" name="user_name" required
+          #user_name="ngModel">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>first Name</mat-label>
+        <input placeholder="first Name" matInput [(ngModel)]="local_data.first_name" name="first_name" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Last Name</mat-label>
+        <input placeholder="Last Name" matInput [(ngModel)]="local_data.last_name" name="last_name" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input placeholder="Email" matInput [(ngModel)]="local_data.email" name="email" required email>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>user status</mat-label>
+        <mat-select [(ngModel)]="local_data.user_status" name="user_status" required>
+          <mat-option *ngFor="let status of userstatus" [value]="status.value">
+            {{status.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>department</mat-label>
+        <input placeholder="department" matInput [(ngModel)]="local_data.department" name="department">
+      </mat-form-field>
+    </div>
+    <ng-template #elseTemplate>
+      Sure to delete <b>{{local_data.name}}</b>?
+    </ng-template>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-raised-button (click)="doAction()" [disabled]="!form.valid" color="success">{{action}}</button>
+    <button mat-button (click)="closeDialog()" mat-flat-button color="warn">Cancel</button>
+  </div>
+</form>
+
+<!-- <form [formGroup]="myForm">
+  <h1 mat-dialog-title>Row Action :: <strong>{{action}}</strong></h1>
+  <div mat-dialog-content>
+    <div *ngIf="action != 'Delete'; else elseTemplate">
+      <label for="user_name">User Name:</label>
+      <input type="text" id="user_name" formControlName="user_name">
+      <div *ngIf="myForm.controls['user_name'].errors?.['required']">User Name is required</div>
+      <span class="text-danger"
+        *ngIf="(myForm.controls['user_name'].touched) && myForm.controls['user_name'].errors?.['required']">
+        Name is required
+      </span>
+
+      <label for="first_name">First Name:</label>
+      <input type="text" id="first_name" formControlName="first_name">
+      <div *ngIf="myForm.controls['first_name'].errors?.['required']">First Name is required</div>
+
+      <label for="last_name">Last Name:</label>
+      <input type="text" id="last_name" formControlName="last_name">
+      <div *ngIf="myForm.controls['last_name'].errors?.['required']">Last Name is required</div>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" formControlName="email">
+      <div *ngIf="myForm.controls['email'].errors?.['required']">Email is required</div>
+
+      <label for="satus">Satus:</label>
+      <mat-select formControlName="user_status" name="satus">
+        <mat-option *ngFor="let status of userstatus" [value]="status.value">
+          {{status.viewValue}}
+        </mat-option>
+      </mat-select>
+      <div *ngIf="myForm.controls['user_status'].errors?.['required']">Satus is required</div>
+
+      <label for="department">department:</label>
+      <input type="text" id="department" formControlName="department">
+      <div *ngIf="myForm.controls['department'].errors?.['required']">Department is required</div>
+
+    </div>
+  </div>
+  <ng-template #elseTemplate>
+    Sure to delete <b>{{local_data.name}}</b>?
+  </ng-template>
+</form> -->

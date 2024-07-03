@@ -1,0 +1,30 @@
+// Default state
+mat-form-field.mat-form-field-appearance-outline .mat-form-field-outline {
+  color: green;
+}
+
+// Focused state
+mat-form-field.mat-form-field-appearance-outline.mat-focused .mat-form-field-outline {
+  color: blue; // or whatever color you want
+}
+
+// Error state
+mat-form-field.mat-form-field-appearance-outline.mat-form-field-invalid .mat-form-field-outline {
+  color: red;
+}
+
+// Placeholder and label
+mat-form-field.mat-form-field-appearance-outline .mat-form-field-label {
+  color: green; // Change as needed
+}
+
+mat-form-field {
+  display: -webkit-inline-box;
+  padding-left: 10px;
+  padding-bottom: 10px;
+}
+
+.mat-button.mat-success,
+.mat-stroked-button.mat-success {
+  color: #155724;
+}

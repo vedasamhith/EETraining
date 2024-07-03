@@ -14,11 +14,24 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatInputModule } from '@angular/material/input';
+import { MatCardModule } from "@angular/material/card";
+import { MatTableModule } from '@angular/material/table';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatMenuModule } from '@angular/material/menu';
+
+import { CdkAccordionModule } from '@angular/cdk/accordion';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { DialogContentExampleDialogComponent } from 'src/Dialogbox/comp/dialog-content-example-dialog.component';
+import { provideHttpClient } from '@angular/common/http';
+import {MatSelectModule} from '@angular/material/select';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SearchComponent
+    SearchComponent,
+    DialogContentExampleDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -33,9 +46,19 @@ import {MatInputModule } from '@angular/material/input';
     MatInputModule,
     ReactiveFormsModule,
     MatAutocompleteModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatCardModule,
+    MatTableModule,
+    MatMenuModule,
+    MatExpansionModule,
+    MatIconModule,
+    MatTooltipModule,
+    CdkAccordionModule,
+    MatDialogModule,
+    MatSelectModule,
+    ToastrModule.forRoot()
   ],
-  providers: [],
+  providers: [provideHttpClient()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
