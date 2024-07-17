@@ -1,0 +1,130 @@
+<mat-card class="appfilter-card">
+    <mat-card-content>
+        <p>Application Filter Applied.</p>
+    </mat-card-content>
+</mat-card>
+<div class="wrap">
+    <mat-card class="submenu-card">
+        <mat-card-content>
+            <mat-nav-list>
+                <mat-accordion expanded="true">
+                    <mat-expansion-panel style="box-shadow: none" expanded="true">
+                        <mat-expansion-panel-header style="margin-left: -8px">
+                            <mat-panel-title> Craftmanship </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <a mat-list-item>
+                            <span style="padding-top: 11px;flex: none;display: flex;">Continuous Delivery</span>
+                        </a>
+                        <a mat-list-item>
+                            <span style="padding-top: 11px;flex: none;display: flex;">Continuous Integration</span>
+                        </a>
+                        <a mat-list-item routerLink="/" routerLinkActive="active">
+                            <span style="padding-top: 11px;flex: none;display: flex;">Test Automation</span>
+                        </a>
+                        <a mat-list-item>
+                            <span style="padding-top: 11px;flex: none;display: flex;">Version Control</span>
+                        </a>
+                        <a mat-list-item>
+                            <span style="padding-top: 11px;flex: none;display: flex;">Deployment Automation</span>
+                        </a>
+                        <a mat-list-item>
+                            <span style="padding-top: 11px;flex: none;display: flex;">Security</span>
+                        </a>
+                        <a mat-list-item>
+                            <span style="padding-top: 11px;flex: none;display: flex;">Architecture</span>
+                        </a>
+                        <a mat-list-item>
+                            <span style="padding-top: 11px;flex: none;display: flex;">Trunk-based Development</span>
+                        </a>
+                    </mat-expansion-panel>
+                </mat-accordion>
+                <mat-accordion expanded="true">
+                    <mat-expansion-panel style="box-shadow: none" expanded="true">
+                        <mat-expansion-panel-header style="margin-left: -8px">
+                            <mat-panel-title> Agility </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <a mat-list-item>
+                            <span style="padding-top: 11px; flex: none;display: flex;">Change Approval</span>
+                        </a>
+                        <a mat-list-item>
+                            <span style="padding-top: 11px; flex: none;display: flex;">Visible Work</span>
+                        </a>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </mat-nav-list>
+        </mat-card-content>
+    </mat-card>
+    <br>
+
+    <mat-card class="mainmenu-card">
+        <mat-card-header>
+            <mat-card-title>
+                <div style="display: flex;">
+                    <h3>
+                        Project On SonarQube &nbsp;
+                        <button mat-icon-button matTooltip="test" style="margin-top: 5px;"
+                            (click)="openDialog()"><mat-icon>star</mat-icon></button>
+                    </h3>
+                </div>
+                <div class='justify'>
+                    <p class="paragraph">Every component build should have its master branch registred in sonarqube, to
+                        help access and
+                        understand its Maintainbility and Testing. Once the componnet/branch exists in SonarQube, this
+                        enbler will be achieved.</p>
+
+                </div>
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+                <ng-container matColumnDef="csiId">
+                    <th mat-header-cell *matHeaderCellDef> CSI ID </th>
+                    <td mat-cell *matCellDef="let element"> {{element.csiId}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="projectName">
+                    <th mat-header-cell *matHeaderCellDef> Project Name </th>
+                    <td mat-cell *matCellDef="let element"> {{element.projectName}} </td>
+                </ng-container>
+
+
+                <ng-container matColumnDef="serviceName">
+                    <th mat-header-cell *matHeaderCellDef> Service Name </th>
+                    <td mat-cell *matCellDef="let element"> {{element.serviceName}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="points">
+                    <th mat-header-cell *matHeaderCellDef> Points </th>
+                    <td mat-cell *matCellDef="let element"> {{element.points}} </td>
+                </ng-container>
+
+
+                <ng-container matColumnDef="status">
+                    <th mat-header-cell *matHeaderCellDef> Status </th>
+                    <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="action">
+                    <mat-header-cell *matHeaderCellDef>
+                        <mat-checkbox (change)="$event ? masterToggle() : null"
+                            [checked]="selection.hasValue() && isAllSelected()"
+                            [indeterminate]="selection.hasValue() && !isAllSelected()">
+                        </mat-checkbox>
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let row">
+                        <mat-checkbox (click)="$event.stopPropagation()"
+                            (change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)">
+                        </mat-checkbox>
+                    </mat-cell>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)"></tr>
+
+
+            </table>
+
+        </mat-card-content>
+    </mat-card>
+</div>
